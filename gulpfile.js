@@ -18,6 +18,7 @@ var MAIN = 'util.js';
 var FILES = [
   path.join('.', PATH.source, 'header.ts'),
   path.join('.', PATH.source, 'export.ts'),
+  path.join('.', PATH.source, 'cloudinary', 'cloudinary.ts'),
   path.join('.', PATH.source, 'test', 'test.ts')
 ];
 
