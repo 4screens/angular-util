@@ -1,0 +1,39 @@
+{
+  "name": "4screens-util",
+  "version": "0.1.0",
+  "description": "",
+  "main": "util.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4screens/util.git"
+  },
+  "author": "",
+  "license": {
+    "type": "proprietary",
+    "url": "https://nopattern.net/"
+  },
+  "bugs": {
+    "url": "https://github.com/4screens/util/issues"
+  },
+  "homepage": "https://github.com/4screens/util",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bump": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^1.2.5",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-tslint": "^3.2.0",
+    "gulp-typescript": "^2.8.3",
+    "gulp-uglify": "^1.4.1",
+    "gulp-util": "^3.0.6",
+    "gulp-wrapper": "^1.0.0",
+    "semver": "^5.0.3",
+    "shelljs": "^0.5.3"
+  }
+}

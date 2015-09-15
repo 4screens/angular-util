@@ -1,0 +1,19 @@
+{
+  "name": "4screens-util",
+  "version": "0.1.0",
+  "homepage": "https://github.com/4screens/util",
+  "authors": [
+    "Tomasz Pietrzak <tomasz.pietrzak@nopattern.net>"
+  ],
+  "license": {
+    "type": "proprietary",
+    "url": "https://nopattern.net/"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
