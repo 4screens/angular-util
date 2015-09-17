@@ -128,6 +128,36 @@ module Cloudinary {
 
     return src + '/' + filepath;
   }
+
+  export function preparePreviewImageUrl(filepath: string, width: number) {
+    if (!filepath) {
+        return '';
+    }
+
+    var src = config.domain + '/' + config.accountName + '/image';
+
+    if (filepath.indexOf('http') !== -1) {
+        src += '/fetch';
+    } else {
+        src += '/upload';
+    }
+
+    var manipulation;
+
+    manipulation = [];
+    manipulation.push('w_' + width);
+    manipulation.push('f_auto');
+
+    manipulation.push('q_82');
+    manipulation.push('dpr_1.0');
+    src += '/' + manipulation.join(',');
+
+    if (filepath.indexOf('http') === -1) {
+        src += '/' + config.uploadFolder;
+    }
+
+    return src + '/' + filepath;
+  }
 }
 
 Export.factory('cloudinary', Cloudinary);
