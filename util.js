@@ -11,8 +11,8 @@ var Export = (function () {
         if (typeof exports === 'object' && typeof module !== 'undefined') {
             module.exports[name] = factory;
         }
-        else if (typeof angular === 'function') {
-            angular.module('4screens.util.' + name, []).const(name, factory);
+        else if (typeof angular === 'object') {
+            angular.module('4screens.util.' + name, []).factory(name, function () { return factory; });
         }
         else {
             if (!window['4screens']) {
@@ -135,6 +135,30 @@ var Cloudinary;
         return src + '/' + filepath;
     }
     Cloudinary.prepareImageUrl = prepareImageUrl;
+    function preparePreviewImageUrl(filepath, width) {
+        if (!filepath) {
+            return '';
+        }
+        var src = config.domain + '/' + config.accountName + '/image';
+        if (filepath.indexOf('http') !== -1) {
+            src += '/fetch';
+        }
+        else {
+            src += '/upload';
+        }
+        var manipulation;
+        manipulation = [];
+        manipulation.push('w_' + width);
+        manipulation.push('f_auto');
+        manipulation.push('q_82');
+        manipulation.push('dpr_1.0');
+        src += '/' + manipulation.join(',');
+        if (filepath.indexOf('http') === -1) {
+            src += '/' + config.uploadFolder;
+        }
+        return src + '/' + filepath;
+    }
+    Cloudinary.preparePreviewImageUrl = preparePreviewImageUrl;
 })(Cloudinary || (Cloudinary = {}));
 Export.factory('cloudinary', Cloudinary);
 
