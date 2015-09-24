@@ -84,7 +84,7 @@ module Cloudinary {
 
     var manipulation;
     // calculate image height (in percent)
-    var height = Math.round(width * imageData.containerHeight);
+    var height = Math.round(width * imageData.containerRatio);
     // calculate image size (in pixel)
     var imageWidth = Math.round(width * imageData.width / 100);
     var imageHeight = Math.round(width * imageData.height  / 100);
