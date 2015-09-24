@@ -75,7 +75,6 @@ module Cloudinary {
     }
 
     var src = config.domain + '/' + config.accountName + '/image';
-    var baseWidth = 540;
 
     if (filepath.indexOf('http') !== -1) {
       src += '/fetch';
@@ -83,15 +82,15 @@ module Cloudinary {
       src += '/upload';
     }
 
-    if (imageData.containerHeight === width) {
-      baseWidth = 300;
-    }
-
     var manipulation;
+    // calculate image height (in percent)
+    var height = Math.round(width * imageData.containerHeight);
+    // calculate image size (in pixel)
     var imageWidth = Math.round(width * imageData.width / 100);
-    var imageHeight = Math.round(width * imageData.containerHeight  / baseWidth);
-    var ox = Math.round(width * imageData.left / 100);
-    var oy = Math.round(imageHeight * imageData.top / 100);
+    var imageHeight = Math.round(width * imageData.height  / 100);
+    // calculate image shift (in pixel)
+    var shiftLeft = Math.round(width * imageData.left / 100);
+    var shiftTop = Math.round(height * imageData.top / 100);
 
     manipulation = [];
     manipulation.push('w_' + imageWidth);
@@ -100,25 +99,19 @@ module Cloudinary {
     manipulation.push('dpr_1.0');
     src += '/' + manipulation.join(',');
 
+    // add image padding if exists
     manipulation = [];
-    manipulation.push('w_' + width);
-    manipulation.push('h_' + imageHeight);
-    manipulation.push('x_' + (-1 * ox));
-    manipulation.push('y_' + (-1 * oy));
-    manipulation.push('c_crop');
-    src += '/' + manipulation.join(',');
-
-    manipulation = [];
-    manipulation.push('w_' + (width + ox));
-    manipulation.push('h_' + (imageHeight + oy));
+    manipulation.push('w_' + padding(imageWidth, width, shiftLeft));
+    manipulation.push('h_' + padding(imageHeight, height, shiftTop));
     manipulation.push('c_mpad');
     src += '/' + manipulation.join(',');
 
+    // crop image to distributed size
     manipulation = [];
     manipulation.push('w_' + width);
-    manipulation.push('h_' + imageHeight);
-    manipulation.push('x_0');
-    manipulation.push('y_0');
+    manipulation.push('h_' + height);
+    manipulation.push('x_' + crop(imageWidth, width, shiftLeft));
+    manipulation.push('y_' + crop(imageHeight, height, shiftTop));
     manipulation.push('c_crop');
     src += '/' + manipulation.join(',');
 
@@ -157,6 +150,41 @@ module Cloudinary {
     }
 
     return src + '/' + filepath;
+  }
+
+  function padding(imageSize: number, outputSize: number, shift: number) {
+    var shiftAfter = outputSize - shift - imageSize;
+
+    if (shift <= 0 && shiftAfter <= 0) {
+      return imageSize;
+    }
+
+    if (shift > shiftAfter) {
+      return imageSize + 2 * shift;
+    } else {
+      return imageSize + 2 * shiftAfter;
+    }
+  }
+
+  function crop(imageSize: number, outputSize: number, shift: number) {
+    var shiftAfter = outputSize - shift - imageSize;
+
+    // without padding
+    if (0 > shift && 0 > shiftAfter) {
+      return -shift;
+    }
+
+    // padding only before
+    // padding both side (before bigger)
+    if (shift >= shiftAfter) {
+      return 0;
+    }
+
+    // padding only after
+    // padding both side (after bigger)
+    if (shiftAfter > shift) {
+      return shiftAfter - shift;
+    }
   }
 }
 
