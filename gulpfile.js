@@ -14,6 +14,7 @@ var PATH = {
   test: 'test'
 };
 var TESTS = [
+  path.join('.', PATH.test, 'cloudinary.spec.js')
 ];
 var BANNER = path.join('.', PATH.source, 'header.txt');
 var MAIN = 'util.js';
