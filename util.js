@@ -1,5 +1,5 @@
 (function() {/*!
- * 4screens-util v0.1.0
+ * 4screens-util v0.1.1
  * (c) 2015 Nopattern sp. z o.o.
  * License: proprietary
  */
@@ -12,7 +12,7 @@ var Export = (function () {
             module.exports[name] = factory;
         }
         else if (typeof angular === 'object') {
-            angular.module('4screens.util.' + name, []).factory(name, function () { return factory; });
+            angular.module('4screens.util.' + name, []).constant(name, factory);
         }
         else {
             if (!window['4screens']) {
@@ -89,44 +89,39 @@ var Cloudinary;
             return '';
         }
         var src = config.domain + '/' + config.accountName + '/image';
-        var baseWidth = 540;
         if (filepath.indexOf('http') !== -1) {
             src += '/fetch';
         }
         else {
             src += '/upload';
         }
-        if (imageData.containerHeight === width) {
-            baseWidth = 300;
-        }
         var manipulation;
+        // calculate image height (in percent)
+        var height = Math.round(width * imageData.containerHeight);
+        // calculate image size (in pixel)
         var imageWidth = Math.round(width * imageData.width / 100);
-        var imageHeight = Math.round(width * imageData.containerHeight / baseWidth);
-        var ox = Math.round(width * imageData.left / 100);
-        var oy = Math.round(imageHeight * imageData.top / 100);
+        var imageHeight = Math.round(width * imageData.height / 100);
+        // calculate image shift (in pixel)
+        var shiftLeft = Math.round(width * imageData.left / 100);
+        var shiftTop = Math.round(height * imageData.top / 100);
         manipulation = [];
         manipulation.push('w_' + imageWidth);
         manipulation.push('f_auto');
         manipulation.push('q_82');
         manipulation.push('dpr_1.0');
         src += '/' + manipulation.join(',');
+        // add image padding if exists
         manipulation = [];
-        manipulation.push('w_' + width);
-        manipulation.push('h_' + imageHeight);
-        manipulation.push('x_' + (-1 * ox));
-        manipulation.push('y_' + (-1 * oy));
-        manipulation.push('c_crop');
-        src += '/' + manipulation.join(',');
-        manipulation = [];
-        manipulation.push('w_' + (width + ox));
-        manipulation.push('h_' + (imageHeight + oy));
+        manipulation.push('w_' + padding(imageWidth, width, shiftLeft));
+        manipulation.push('h_' + padding(imageHeight, height, shiftTop));
         manipulation.push('c_mpad');
         src += '/' + manipulation.join(',');
+        // crop image to distributed size
         manipulation = [];
         manipulation.push('w_' + width);
-        manipulation.push('h_' + imageHeight);
-        manipulation.push('x_0');
-        manipulation.push('y_0');
+        manipulation.push('h_' + height);
+        manipulation.push('x_' + crop(imageWidth, width, shiftLeft));
+        manipulation.push('y_' + crop(imageHeight, height, shiftTop));
         manipulation.push('c_crop');
         src += '/' + manipulation.join(',');
         if (filepath.indexOf('http') === -1) {
@@ -159,6 +154,35 @@ var Cloudinary;
         return src + '/' + filepath;
     }
     Cloudinary.preparePreviewImageUrl = preparePreviewImageUrl;
+    function padding(imageSize, outputSize, shift) {
+        var shiftAfter = outputSize - shift - imageSize;
+        if (shift <= 0 && shiftAfter <= 0) {
+            return imageSize;
+        }
+        if (shift > shiftAfter) {
+            return imageSize + 2 * shift;
+        }
+        else {
+            return imageSize + 2 * shiftAfter;
+        }
+    }
+    function crop(imageSize, outputSize, shift) {
+        var shiftAfter = outputSize - shift - imageSize;
+        // without padding
+        if (0 > shift && 0 > shiftAfter) {
+            return -shift;
+        }
+        // padding only before
+        // padding both side (before bigger)
+        if (shift >= shiftAfter) {
+            return 0;
+        }
+        // padding only after
+        // padding both side (after bigger)
+        if (shiftAfter > shift) {
+            return shiftAfter - shift;
+        }
+    }
 })(Cloudinary || (Cloudinary = {}));
 Export.factory('cloudinary', Cloudinary);
 
