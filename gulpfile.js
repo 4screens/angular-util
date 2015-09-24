@@ -13,6 +13,8 @@ var PATH = {
   source: 'src',
   test: 'test'
 };
+var TESTS = [
+];
 var BANNER = path.join('.', PATH.source, 'header.txt');
 var MAIN = 'util.js';
 var FILES = [
@@ -83,4 +85,10 @@ gulp.task('minify', ['build'], function() {
 
 gulp.task('develop', ['minify'], function() {
   gulp.watch(FILES, ['minify']);
+  gulp.watch(TESTS, ['test']);
+});
+
+gulp.task('test', function() {
+  return gulp.src(TESTS, {read: false})
+    .pipe(plugins.mocha({reporter: 'spec'}));
 });
