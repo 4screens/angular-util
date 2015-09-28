@@ -1,5 +1,5 @@
 (function() {/*!
- * 4screens-util v0.1.1
+ * 4screens-util v0.1.3
  * (c) 2015 Nopattern sp. z o.o.
  * License: proprietary
  */
@@ -106,7 +106,7 @@ var Cloudinary;
         var shiftTop = Math.round(height * imageData.top / 100);
         manipulation = [];
         manipulation.push('w_' + imageWidth);
-        manipulation.push('f_auto');
+        manipulation.push('f_png');
         manipulation.push('q_82');
         manipulation.push('dpr_1.0');
         src += '/' + manipulation.join(',');
