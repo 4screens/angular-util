@@ -84,13 +84,23 @@ module Cloudinary {
 
     var manipulation;
     // calculate image height (in percent)
+    if (!imageData.containerRatio) {
+      var containerWidth = 540;
+      if (width === imageData.containerHeight) {
+        containerWidth = 300;
+      }
+      imageData.containerRatio = Math.round(imageData.containerHeight / containerWidth * 100) / 100;
+    }
     var height = Math.round(width * imageData.containerRatio);
-    // calculate image size (in pixel)
-    var imageWidth = Math.round(width * imageData.width / 100);
-    var imageHeight = Math.round(width * imageData.height  / 100);
     // calculate image shift (in pixel)
     var shiftLeft = Math.round(width * imageData.left / 100);
     var shiftTop = Math.round(height * imageData.top / 100);
+    // calculate image size (in pixel)
+    var imageWidth = Math.round(width * imageData.width / 100);
+    var imageHeight = Math.round(width * imageData.height  / 100);
+    if (imageHeight !== imageHeight) { //imageHeight === NaN
+      imageHeight = height - shiftTop;
+    }
 
     manipulation = [];
     manipulation.push('w_' + imageWidth);
