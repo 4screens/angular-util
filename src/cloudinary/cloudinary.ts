@@ -66,7 +66,7 @@ module Cloudinary {
       src += '/' + config.uploadFolder;
     }
 
-    return src + '/' + filepath;
+    return src + '/' + encodeURIComponent(filepath);
   }
 
   export function prepareImageUrl(filepath: string, width: number, imageData) {
@@ -129,7 +129,7 @@ module Cloudinary {
       src += '/' + config.uploadFolder;
     }
 
-    return src + '/' + filepath;
+    return src + '/' + encodeURIComponent(filepath);
   }
 
   export function preparePreviewImageUrl(filepath: string, width: number) {
@@ -159,7 +159,7 @@ module Cloudinary {
         src += '/' + config.uploadFolder;
     }
 
-    return src + '/' + filepath;
+    return src + '/' + encodeURIComponent(filepath);
   }
 
   function padding(imageSize: number, outputSize: number, shift: number) {

@@ -81,7 +81,7 @@ var Cloudinary;
         if (filepath.indexOf('http') === -1) {
             src += '/' + config.uploadFolder;
         }
-        return src + '/' + filepath;
+        return src + '/' + encodeURIComponent(filepath);
     }
     Cloudinary.prepareBackgroundImageUrl = prepareBackgroundImageUrl;
     function prepareImageUrl(filepath, width, imageData) {
@@ -137,7 +137,7 @@ var Cloudinary;
         if (filepath.indexOf('http') === -1) {
             src += '/' + config.uploadFolder;
         }
-        return src + '/' + filepath;
+        return src + '/' + encodeURIComponent(filepath);
     }
     Cloudinary.prepareImageUrl = prepareImageUrl;
     function preparePreviewImageUrl(filepath, width) {
@@ -161,7 +161,7 @@ var Cloudinary;
         if (filepath.indexOf('http') === -1) {
             src += '/' + config.uploadFolder;
         }
-        return src + '/' + filepath;
+        return src + '/' + encodeURIComponent(filepath);
     }
     Cloudinary.preparePreviewImageUrl = preparePreviewImageUrl;
     function padding(imageSize, outputSize, shift) {
