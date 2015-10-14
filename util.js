@@ -1,5 +1,5 @@
 (function() {/*!
- * 4screens-util v0.1.4
+ * 4screens-util v0.1.6
  * (c) 2015 Nopattern sp. z o.o.
  * License: proprietary
  */
