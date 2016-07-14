@@ -25,7 +25,7 @@ var Export = (function () {
         }
     };
     return Export;
-})();
+}());
 
 var Cloudinary;
 (function (Cloudinary) {
@@ -116,7 +116,8 @@ var Cloudinary;
         }
         manipulation = [];
         manipulation.push('w_' + imageWidth);
-        manipulation.push('f_png');
+        manipulation.push('fl_lossy');
+        manipulation.push('f_auto');
         manipulation.push('q_82');
         manipulation.push('dpr_1.0');
         src += '/' + manipulation.join(',');
@@ -203,7 +204,7 @@ var Test = (function () {
         console.log(data);
     };
     return Test;
-})();
+}());
 Export.factory('test', Test);
 })();
 //# sourceMappingURL=util.js.map

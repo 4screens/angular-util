@@ -43,7 +43,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_840,h_431,c_mpad/' +
           'w_700,h_392,x_35,y_39,c_crop/' +
           'mockUpload/image.png');
@@ -59,7 +59,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_630,f_png,q_82,dpr_1.0/' +
+          'w_630,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1050,h_840,c_mpad/' +
           'w_700,h_438,x_0,y_44,c_crop/' +
           'mockUpload/image.png');
@@ -75,7 +75,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_840,h_1120,c_mpad/' +
           'w_700,h_438,x_35,y_44,c_crop/' +
           'mockUpload/image.png');
@@ -91,7 +91,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_980,h_1120,c_mpad/' +
           'w_700,h_438,x_280,y_22,c_crop/' +
           'mockUpload/image.png');
@@ -107,7 +107,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_490,f_png,q_82,dpr_1.0/' +
+          'w_490,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_770,h_1120,c_mpad/' +
           'w_700,h_438,x_70,y_44,c_crop/' +
           'mockUpload/image.png');
@@ -123,7 +123,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_490,f_png,q_82,dpr_1.0/' +
+          'w_490,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_770,h_1120,c_mpad/' +
           'w_700,h_438,x_0,y_44,c_crop/' +
           'mockUpload/image.png');
@@ -139,7 +139,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_840,h_892,c_mpad/' +
           'w_700,h_438,x_70,y_0,c_crop/' +
           'mockUpload/image.png');
@@ -155,7 +155,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_1120,f_png,q_82,dpr_1.0/' +
+          'w_1120,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1120,h_648,c_mpad/' +
           'w_700,h_438,x_35,y_210,c_crop/' +
           'mockUpload/image.png');
@@ -171,7 +171,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_1120,f_png,q_82,dpr_1.0/' +
+          'w_1120,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1120,h_490,c_mpad/' +
           'w_700,h_438,x_70,y_0,c_crop/' +
           'mockUpload/image.png');
@@ -187,7 +187,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/upload/' +
-          'w_1120,f_png,q_82,dpr_1.0/' +
+          'w_1120,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1120,h_648,c_mpad/' +
           'w_700,h_438,x_70,y_210,c_crop/' +
           'mockUpload/image.png');
@@ -212,7 +212,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_840,h_431,c_mpad/' +
           'w_700,h_392,x_35,y_39,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -228,7 +228,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_630,f_png,q_82,dpr_1.0/' +
+          'w_630,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1050,h_840,c_mpad/' +
           'w_700,h_438,x_0,y_44,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -244,7 +244,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_840,h_1120,c_mpad/' +
           'w_700,h_438,x_35,y_44,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -260,7 +260,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_980,h_1120,c_mpad/' +
           'w_700,h_438,x_280,y_22,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -276,7 +276,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_490,f_png,q_82,dpr_1.0/' +
+          'w_490,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_770,h_1120,c_mpad/' +
           'w_700,h_438,x_70,y_44,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -292,7 +292,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_490,f_png,q_82,dpr_1.0/' +
+          'w_490,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_770,h_1120,c_mpad/' +
           'w_700,h_438,x_0,y_44,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -308,7 +308,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_840,f_png,q_82,dpr_1.0/' +
+          'w_840,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_840,h_892,c_mpad/' +
           'w_700,h_438,x_70,y_0,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -324,7 +324,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_1120,f_png,q_82,dpr_1.0/' +
+          'w_1120,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1120,h_648,c_mpad/' +
           'w_700,h_438,x_35,y_210,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -340,7 +340,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_1120,f_png,q_82,dpr_1.0/' +
+          'w_1120,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1120,h_490,c_mpad/' +
           'w_700,h_438,x_70,y_0,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');
@@ -356,7 +356,7 @@ describe('[Cloudinary]', function() {
         });
 
         expect(imageUrl).to.eq('mockDomain/mockAccount/image/fetch/' +
-          'w_1120,f_png,q_82,dpr_1.0/' +
+          'w_1120,fl_lossy,f_auto,q_82,dpr_1.0/' +
           'w_1120,h_648,c_mpad/' +
           'w_700,h_438,x_70,y_210,c_crop/' +
           'http%3A%2F%2Fplacehold.it%2F700x700');

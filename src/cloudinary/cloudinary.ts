@@ -104,7 +104,8 @@ module Cloudinary {
 
     manipulation = [];
     manipulation.push('w_' + imageWidth);
-    manipulation.push('f_png');
+    manipulation.push('fl_lossy');
+    manipulation.push('f_auto');
     manipulation.push('q_82');
     manipulation.push('dpr_1.0');
     src += '/' + manipulation.join(',');
