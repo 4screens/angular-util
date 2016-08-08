@@ -60,6 +60,8 @@ var Cloudinary;
         manipulation = [];
         manipulation.push('w_' + width);
         manipulation.push('f_auto');
+        manipulation.push('fl_lossy');
+        manipulation.push('q_auto');
         manipulation.push('h_' + height);
         switch (position) {
             case 'fill':
