@@ -118,7 +118,7 @@ var Cloudinary;
         manipulation.push('w_' + imageWidth);
         manipulation.push('fl_lossy');
         manipulation.push('f_auto');
-        manipulation.push('q_82');
+        manipulation.push('q_auto');
         manipulation.push('dpr_1.0');
         src += '/' + manipulation.join(',');
         // add image padding if exists
@@ -155,8 +155,9 @@ var Cloudinary;
         var manipulation;
         manipulation = [];
         manipulation.push('w_' + width);
+        manipulation.push('fl_lossy');
         manipulation.push('f_auto');
-        manipulation.push('q_82');
+        manipulation.push('q_auto');
         manipulation.push('dpr_1.0');
         src += '/' + manipulation.join(',');
         if (filepath.indexOf('http') === -1) {
