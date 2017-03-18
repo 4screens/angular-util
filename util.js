@@ -58,11 +58,15 @@ var Cloudinary;
         var manipulation;
         var blured = blur ? blur * 100 : 0;
         manipulation = [];
-        manipulation.push('w_' + width);
         manipulation.push('f_auto');
         manipulation.push('fl_lossy');
         manipulation.push('q_auto');
-        manipulation.push('h_' + height);
+        if (width) {
+            manipulation.push('w_' + width);
+        }
+        if (height) {
+            manipulation.push('h_' + height);
+        }
         switch (position) {
             case 'fill':
                 manipulation.push('c_fill');

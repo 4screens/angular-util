@@ -39,11 +39,15 @@ module Cloudinary {
     var blured = blur ? blur * 100 : 0;
 
     manipulation = [];
-    manipulation.push('w_' + width);
     manipulation.push('f_auto');
     manipulation.push('fl_lossy');
     manipulation.push('q_auto');
-    manipulation.push('h_' + height);
+    if (width) {
+      manipulation.push('w_' + width);
+    }
+    if (height) {
+      manipulation.push('h_' + height);
+    }
 
     switch (position) {
       case 'fill':
@@ -99,7 +103,7 @@ module Cloudinary {
     var shiftTop = Math.round(height * imageData.top / 100);
     // calculate image size (in pixel)
     var imageWidth = Math.round(width * imageData.width / 100);
-    var imageHeight = Math.round(width * imageData.height  / 100);
+    var imageHeight = Math.round(width * imageData.height / 100);
     if (imageHeight !== imageHeight) { //imageHeight === NaN
       imageHeight = height - shiftTop;
     }
@@ -137,15 +141,15 @@ module Cloudinary {
 
   export function preparePreviewImageUrl(filepath: string, width: number) {
     if (!filepath) {
-        return '';
+      return '';
     }
 
     var src = config.domain + '/' + config.accountName + '/image';
 
     if (filepath.indexOf('http') !== -1) {
-        src += '/fetch';
+      src += '/fetch';
     } else {
-        src += '/upload';
+      src += '/upload';
     }
 
     var manipulation;
@@ -160,7 +164,7 @@ module Cloudinary {
     src += '/' + manipulation.join(',');
 
     if (filepath.indexOf('http') === -1) {
-        src += '/' + config.uploadFolder;
+      src += '/' + config.uploadFolder;
     }
 
     return src + '/' + encodeURIComponent(filepath);
